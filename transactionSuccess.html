@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transacción Exitosa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="screen transaction-success">
+        <h1>¡Éxito!</h1>
+        <p id="successMessage"></p>
+        <div class="button-container">
+            <button onclick="location.href='dashboard.html'">Regresar al Dashboard</button>
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const amount = urlParams.get('amount');
+        const transactionType = urlParams.get('type');
+        
+        if (transactionType === 'withdraw') {
+            document.getElementById('successMessage').innerText = `Has retirado: $${amount} exitosamente.`;
+        } else if (transactionType === 'deposit') {
+            document.getElementById('successMessage').innerText = `Has depositado: $${amount} exitosamente.`;
+        }
+    </script>
+</body>
+</html>

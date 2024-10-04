@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Depósito</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="screen confirm-deposit">
+        <h1>Confirmar Depósito</h1>
+        <p>¿Estás seguro de que deseas depositar <strong id="depositAmount"></strong>?</p>
+        <div class="button-container">
+            <button onclick="processDeposit()">Sí, depositar</button>
+            <button onclick="location.href='deposit.html'">No, volver</button>
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const amount = urlParams.get('amount');
+        document.getElementById('depositAmount').innerText = `$${amount}`;
+        
+        function processDeposit() {
+            const balance = localStorage.getItem('balance') || 100;
+            localStorage.setItem('balance', parseFloat(balance) + parseFloat(amount));
+            location.href = 'transactionSuccess.html?amount=' + amount + '&type=deposit';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depositar Dinero</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="screen deposit">
+        <h1>¿Cuánto deseas depositar?</h1>
+        <input type="number" placeholder="Cantidad" id="depositAmount" />
+        <div class="button-container">
+            <button onclick="location.href='confirmDeposit.html?amount=' + document.getElementById('depositAmount').value">Confirmar</button>
+            <button onclick="location.href='dashboard.html'">Regresar</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Retiro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="screen confirm-withdraw">
+        <h1>Confirmar Retiro</h1>
+        <p>¿Estás seguro de que deseas retirar <strong id="withdrawAmount"></strong>?</p>
+        <div class="button-container">
+            <button onclick="processWithdraw()">Sí, retirar</button>
+            <button onclick="location.href='withdraw.html'">No, volver</button>
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const amount = urlParams.get('amount');
+        document.getElementById('withdrawAmount').innerText = `$${amount}`;
+        
+        function processWithdraw() {
+            const balance = localStorage.getItem('balance') || 100;
+            if (amount && amount > 0 && amount <= balance) {
+                localStorage.setItem('balance', balance - amount);
+                location.href = 'transactionSuccess.html?amount=' + amount + '&type=withdraw';
+            } else {
+                location.href = 'transactionError.html';
+            }
+        }
+    </script>
+</body>
+</html>

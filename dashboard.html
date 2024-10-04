@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Cajero Automático</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="screen dashboard">
+        <h1>Bienvenido al Dashboard</h1>
+        <p>Tu saldo actual es: <strong id="currentBalance">$100</strong></p>
+        <div class="button-container">
+            <button onclick="location.href='withdraw.html'">Retirar Dinero</button>
+            <button onclick="location.href='deposit.html'">Depositar Dinero</button>
+            <button onclick="location.href='goodbye.html'">Salir</button>
+        </div>
+    </div>
+    <script>
+        const balance = localStorage.getItem('balance') || 100;
+        document.getElementById('currentBalance').innerText = `$${balance}`;
+    </script>
+</body>
+</html>
